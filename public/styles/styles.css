@@ -25,4 +25,7 @@
 h1 {
   text-align: center;
   margin-bottom: 20px;
+  background-color: rgb(0, 140, 200);
+  border: 3px double;
+  color: white;
 }
