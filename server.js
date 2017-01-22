@@ -15,21 +15,20 @@ app.get('/', function(req, res){
 
 app.post('/equal', function(req,res){
     console.log(req.body);
-    var a = Number(req.body.a);
-    var b = Number(req.body.b);
-    var operator = req.body.operator;
+    var nums = req.body.nums;
+    var operator = req.body.operator[0];
     switch(operator){
-      case 'add':
-        toReturn = a + b;
+      case '+':
+        toReturn = Number(nums[0]) + Number(nums[1]);
         break;
-      case 'subtract':
-        toReturn = a - b;
+      case '-':
+        toReturn = Number(nums[0]) - Number(nums[1]);
         break;
-      case 'multiply':
-        toReturn = a * b;
+      case 'x':
+        toReturn = Number(nums[0]) * Number(nums[1]);
         break;
-      case 'divide':
-        toReturn = a / b;
+      case '/':
+        toReturn = Number(nums[0]) / Number(nums[1]);
     }
     res.sendStatus(200);
   });
