@@ -43,23 +43,31 @@ app.post('/equal', function(req,res){
     var nums = req.body.nums;
     var operator = req.body.operator;
     for(var i = 0;i<operator.length;i++){
-      if(operator[i] == '/'){
+      if(operator[i] == '/'||operator[i] == 'x'){
+        if(operator[i] == '/'){
           number1 = nums[i];
           number2 = nums[i+1];
           number1 = number1 / number2;
           nums.splice(i,2, number1);
           operator.splice(i,1);
-      }
-    }
-    for(var i = 0;i<operator.length;i++){
-      if(operator[i] == 'x'){
+        }else{
           number1 = nums[i];
           number2 = nums[i+1];
           number1 = number1 * number2;
           nums.splice(i,2, number1);
           operator.splice(i,1);
+        }
       }
     }
+    // for(var i = 0;i<operator.length;i++){
+    //   if(operator[i] == 'x'){
+    //       number1 = nums[i];
+    //       number2 = nums[i+1];
+    //       number1 = number1 * number2;
+    //       nums.splice(i,2, number1);
+    //       operator.splice(i,1);
+    //   }
+    // }
     for(var i = 0;i<operator.length;i++){
       if(operator[i] == '+'){
           number1 = Number(nums[i]);
@@ -76,9 +84,9 @@ app.post('/equal', function(req,res){
           number1 = number1 - number2;
           nums.splice(i,2, number1);
           operator.splice(i,1);
-          toReturn = nums.pop();
       }
     }
+    toReturn = nums.pop();
     res.sendStatus(200);
   });
 
