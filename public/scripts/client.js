@@ -1,6 +1,6 @@
 var nums = [];
 var opps = [];
-
+var equation = '';
 $(function(){
   console.log('Doc Ready');
 
@@ -8,15 +8,25 @@ $(function(){
     event.preventDefault();
     var numToPush = $('#output').text();
     var oppToPush = $(this).text();
+    if(equation == ''){
+      equation += numToPush + oppToPush;
+      $('#output').text(0);
+      nums.push(numToPush);
+      opps.push(oppToPush);
+    }else{
     nums.push(numToPush);
     opps.push(oppToPush);
+    equation += numToPush + oppToPush;
     $('#output').text(0);
+    console.log(equation);
+    }
   });
 
   $('#equals').click(function(event){
     event.preventDefault();
     var numToPush = $('#output').text();
     nums.push(numToPush);
+    equation.concat(numToPush);
     equal();
   });
 
@@ -24,6 +34,7 @@ $(function(){
     $('#output').text(0);
     nums = [];
     opps = [];
+    equation = '';
   });
 
   $('.num').click(function(){
@@ -75,4 +86,5 @@ function displayAnswer(toReturn){
   $('#output').text(toReturn);
   nums = [];
   opps = [];
+  equation = '';
 }
