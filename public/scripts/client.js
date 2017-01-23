@@ -40,9 +40,14 @@ $(function(){
   });
 
   $('#decimal').click(function(){
-    integer = $('#output').text();
-    integer += $(this).text();
-    $('#output').text(integer);
+    console.log($('#output').text());
+    if($('#output').text().includes('.')){
+
+    }else{
+      integer = $('#output').text();
+      integer += $(this).text();
+      $('#output').text(integer);
+    }
   });
 });
 
